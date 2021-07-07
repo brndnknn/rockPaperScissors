@@ -57,36 +57,44 @@ function getPlayerSelection(){
 
 function playRound(playerSelection, computerSelection) {
     console.log(playerSelection, computerSelection);
+    let winner;
     if(playerSelection == computerSelection){
-        return "Tie Try Again";
+        winner = 0;
+        console.log('tie try again')
+        return winner;
     }
     else{
-        //first part decides winner
-        let result = playerSelection - computerSelection;
-        let winner;
-        if (result == 2 || result == -1){
-            winner = 'You Win! ';
-        }
-        else{
-            winner = 'You Lose! ';
-        }
-        //second part decides comment
-        result = playerSelection + computerSelection;
+        
+        //first part decides comment
+        let result = playerSelection + computerSelection;
         let comment;
         switch (result) {
             case 3:
-                comment = "Rock Smashes Scissors!";
-                break;
-            case 2:
-                comment = "Scissors Cut Paper!";
-            default:
                 comment = "Paper Covers Rock!";
                 break;
+            case 2:
+                comment = "Rock Smashes Scissors!";
+                break;
+            default:
+                comment = "Scissors cuts Paper!";
+                break;
         }
-        return winner + comment;
+        //second part decides winner
+        result = playerSelection - computerSelection;
+        let winner;
+        if (result == 2 || result == -1){
+            winner = 1;
+            comment = 'You win! ' + comment;
+        }
+        else{
+            winner = -1;
+            comment = "You lose! " + comment;
+        }
+        console.log(comment);
+        return winner;
     }
   }
   
-  const playerSelection = 2;
+  const playerSelection = 0;
   const computerSelection = computerPlay();
   console.log(playRound(playerSelection, computerSelection));
