@@ -115,8 +115,15 @@ function playRound(playerSelection, computerSelection) {
                   break;
           }
       }
+      if( playerScore > computerScore){
+          console.log("You beat the Computer!")
+      }else {
+          console.log("The Computer beat you!")
+      }
   }
   
-  const playerSelection = 2;
-  const computerSelection = 1;
-  console.log(playRound(playerSelection, computerSelection));
+  //const playerSelection = 2;
+  //const computerSelection = 1;
+  //console.log(playRound(playerSelection, computerSelection));
+
+  game();
