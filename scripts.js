@@ -94,7 +94,29 @@ function playRound(playerSelection, computerSelection) {
         return winner;
     }
   }
+
+  function game(){
+      let playerScore = 0;
+      let computerScore = 0;
+      for (let i = 0; i < 5; i++) {
+          let thisRound = playRound(getPlayerSelection(), computerPlay());
+          console.log(thisRound);
+          switch (thisRound) {
+              case 0:
+                  i--;
+                  break;
+                case 1:
+                    playerScore++;
+                    break;
+                case -1:
+                computerScore++;
+                    break;
+              default:
+                  break;
+          }
+      }
+  }
   
-  const playerSelection = 0;
-  const computerSelection = computerPlay();
+  const playerSelection = 2;
+  const computerSelection = 1;
   console.log(playRound(playerSelection, computerSelection));
