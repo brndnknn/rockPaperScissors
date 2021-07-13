@@ -37,22 +37,6 @@ function computerPlay(){
     }
 }
 
-function getPlayerSelection(){
-    let done = false;
-    while (!done) {
-        let choice = prompt('Chose: Rock Paper Scissors!');
-        choice = choice.toLowerCase()
-        if(choice == 'rock'){
-            return 2;
-        }
-        else if(choice == 'paper'){
-            return 1;
-        }
-        else if (choice == 'scissors'){
-            return 0;
-        }  
-    }
-}
 
 
 function playRound(playerSelection, computerSelection) {
@@ -94,36 +78,21 @@ function playRound(playerSelection, computerSelection) {
         return winner;
     }
   }
-
-  function game(){
       let playerScore = 0;
       let computerScore = 0;
-      for (let i = 0; i < 5; i++) {
-          let thisRound = playRound(getPlayerSelection(), computerPlay());
-          console.log(thisRound);
-          switch (thisRound) {
-              case 0:
-                  i--;
-                  break;
-                case 1:
-                    playerScore++;
-                    break;
-                case -1:
-                computerScore++;
-                    break;
-              default:
-                  break;
-          }
-      }
-      if( playerScore > computerScore){
-          console.log("You beat the Computer!")
-      }else {
-          console.log("The Computer beat you!")
-      }
-  }
-  
-  //const playerSelection = 2;
-  //const computerSelection = 1;
-  //console.log(playRound(playerSelection, computerSelection));
+    
+function updateScore(playerChoice){
+    console.log(playerChoice)
 
-  game();
+}
+
+
+let btns = Array.from(document.getElementsByTagName('button'));
+
+btns.forEach((button) => {
+
+    // and for each one we add a 'click' listener
+    button.addEventListener('click', () => {
+      updateScore(button.id);
+    });
+  });
