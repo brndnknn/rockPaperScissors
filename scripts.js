@@ -52,6 +52,7 @@ function playRound(playerSelection, computerSelection) {
         //first part decides comment
         let result = playerSelection + computerSelection;
         let comment;
+        console.log(result);
         switch (result) {
             case 3:
                 comment = "Paper Covers Rock!";
@@ -59,7 +60,7 @@ function playRound(playerSelection, computerSelection) {
             case 2:
                 comment = "Rock Smashes Scissors!";
                 break;
-            default:
+            case 1:
                 comment = "Scissors cuts Paper!";
                 break;
         }
@@ -83,6 +84,29 @@ function playRound(playerSelection, computerSelection) {
     
 function updateScore(playerChoice){
     console.log(playerChoice)
+    let roundWinner = playRound(playerChoice, computerPlay());
+    switch (roundWinner) {
+        case 0:
+            console.log("tie");
+            break;
+        case 1:
+            console.log("Player wins");
+            playerScore++;
+            break;
+        case -1:
+            console.log("Computer Wins");
+            computerScore++;
+            break;
+        default:
+            break;
+    }
+    if (playerScore >= 5){
+        console.log("player Wins!");
+
+    } else if (computerScore >= 5){
+        console.log("computer wins!");
+
+    }
 
 }
 
@@ -93,6 +117,6 @@ btns.forEach((button) => {
 
     // and for each one we add a 'click' listener
     button.addEventListener('click', () => {
-      updateScore(button.id);
+      updateScore(Number(button.id));
     });
   });
