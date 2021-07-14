@@ -79,12 +79,42 @@ function playRound(playerSelection, computerSelection) {
         return winner;
     }
   }
-      let playerScore = 0;
-      let computerScore = 0;
+
+  // Score keeping and displaying variables
+
+let playerScore = 0;
+let computerScore = 0;
+let compLastMove = document.getElementById('compLastMove');
+let playerLastMove = document.getElementById('playerLastMove');
+let scoreBoard = document.getElementById('scoreBoard');
+let playerPoints = document.getElementById('playerPoints');
+let computerPoints = document.getElementById('computerPoints');
+
+
+// function to translate code for rock paper scissors to text
+function numToText(number){
+    let text = '';
+    switch (number) {
+        case 2:
+            text = "rock";
+            break;
+        case 1:
+            text = "paper";
+            break;
+        case 0:
+            text = "scissors";
+        default:
+            break;
+    }
+    return text;
+}
+
     
 function updateScore(playerChoice){
-    console.log(playerChoice)
-    let roundWinner = playRound(playerChoice, computerPlay());
+    console.log(playerChoice);
+    let computerChoice = computerPlay();
+      
+    let roundWinner = playRound(playerChoice, computerChoice);
     switch (roundWinner) {
         case 0:
             console.log("tie");
@@ -100,22 +130,25 @@ function updateScore(playerChoice){
         default:
             break;
     }
+    compLastMove.textContent = "Computer's Last Move: " + numToText(computerChoice);
+    playerLastMove.textContent = "Player's Last Move: " + numToText(playerChoice);
+    playerPoints.textContent = "Player: " + playerScore;
+    computerPoints.textContent = "Computer: " + computerScore;
+    
     if (playerScore >= 5){
-        console.log("player Wins!");
+        alert("player Wins!");
 
     } else if (computerScore >= 5){
-        console.log("computer wins!");
+        alert("computer wins!");
 
     }
-
+    
 }
 
 
 let btns = Array.from(document.getElementsByTagName('button'));
 
 btns.forEach((button) => {
-
-    // and for each one we add a 'click' listener
     button.addEventListener('click', () => {
       updateScore(Number(button.id));
     });
