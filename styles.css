@@ -2,15 +2,52 @@
 
 styling to do list
 
-center everything
-change font
-set up block layout for score board div
-    last moves side by side, scores below also side by side
+
 set play again button to bottom of screen
 change colors
-change buttons to pics
 give reset buttton a border and change its hover to a pointer not a text cursor
 
 
 
 */
+
+body {
+    background-color:darkgrey;
+    border: 15px solid blue;
+    padding: 10px;
+    font-family: sans-serif;
+}
+
+main {
+    border: 10px solid black;
+    padding: 15px;
+
+
+}
+h1, h2, h3 {
+    text-align: center;
+}
+
+button {
+    padding: 10px;
+    margin: 20px;
+    font-size: larger;
+}
+
+#playerChoices {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+#scoreBoard {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+}
+

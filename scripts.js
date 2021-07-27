@@ -120,11 +120,12 @@ function updateScore(playerChoice){
     if (playerScore >= 5){
         console.log("player Wins!");
         main.hidden = true;
-        resetBtn.textContent = 'You Win! '
+        resetBtn.textContent = 'You Win! Play Again?'
 
     } else if (computerScore >= 5){
         console.log("computer wins!");
         main.hidden = true;
+        resetBtn.textContent = 'You Lose! Play Again?'
 
     }
     
@@ -139,6 +140,7 @@ function resetGame(){
     playerLastMove.textContent = '';
     playerPoints.textContent = ''; 
     computerPoints.textContent = '';
+    resetBtn.textContent = "Play Again!"
     playerScore = 0;
     computerScore = 0;
     main.hidden = false;
